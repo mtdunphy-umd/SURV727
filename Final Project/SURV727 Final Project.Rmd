@@ -1,0 +1,65 @@
+---
+title: "SURV727 Final Project"
+author: "Michael Dunphy"
+date: "2022-11-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+install.packages("remotes")
+remotes::install_github("robinspollak/R.openFEC")
+
+install.packages("plyr")
+
+```{r}
+
+# R wrapper for the Open FEC API https://rdrr.io/github/robinspollak/R.openFEC/man/
+library(R.openFEC)
+library(plyr)
+
+"xVmzxja3eXKa9VgaCHCfLPfcj2qQxXMCXrFcvq2F"
+
+```
+
+
+```{r}
+
+# load 538 primary candidates
+
+dem <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/primary-project-2022/dem_candidates.csv")
+head(dem)
+
+rep <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/primary-project-2022/rep_candidates.csv")
+head(rep)
+
+```
+
+```{r}
+
+# process 538 primary candidate data 
+
+dem["Party"] <- "DEM"
+rep["Party"] <- "GOP"
+
+full_primary_candidates <- rbind.fill(dem, rep)
+head(full_primary_candidates)
+
+write.csv(full_primary_candidates, "full_primary_candidates.csv")
+
+```
+
+```{r}
+
+# grab general election candidates see tableau
+
+```
+
+```{r}
+
+# DRA Data
+
+```
+
